@@ -1,0 +1,78 @@
+# Expires
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType text/css "access 1 month"
+ExpiresByType text/html "access 1 month"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType text/x-javascript "access 1 month"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access 1 month"
+</IfModule>
+
+# GZIP
+<ifModule mod_gzip.c>
+ mod_gzip_on Yes
+ mod_gzip_dechunk Yes
+ mod_gzip_item_include file .(html?|txt|css|js|json|php|pl|svg)$
+ mod_gzip_item_include handler ^cgi-script$
+ mod_gzip_item_include mime ^text/.*
+ mod_gzip_item_include mime ^application/x-javascript.*
+ mod_gzip_item_include mime ^application/json.*
+ mod_gzip_item_exclude mime ^image/.*
+ mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</ifModule>
+
+# Deflate
+<ifModule mod_deflate.c>
+ AddOutputFilterByType DEFLATE text/html text/xml text/css text/plain
+ AddOutputFilterByType DEFLATE image/svg+xml application/xhtml+xml application/xml
+ AddOutputFilterByType DEFLATE application/rdf+xml application/rss+xml application/atom+xml
+ AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript application/json
+ AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-otf
+ AddOutputFilterByType DEFLATE font/truetype font/opentype
+</ifModule>
+AddType image/svg+xml svg svgz
+AddEncoding gzip svgz
+
+# Guarantee HTTPS for 1 Year including Sub Domains
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+# 404 Error Page
+ErrorDocument 404 https://gabraelhousedemolition.com.au/404.php
+
+RewriteEngine On
+
+RewriteRule ^/?house-demolition/(.*)$ /locations/$1 [R,L]
+
+# Remove www
+RewriteCond %{HTTP_HOST} ^www\.gabraelhousedemolition\.com.au [NC]
+RewriteRule ^(.*)$ http://gabraelhousedemolition.com.au/$1 [R=301,L]
+
+# Force Trailing Slash
+RewriteCond %{REQUEST_URI} /+[^\.]+$
+RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+
+# Redirect to HTTPS
+RewriteCond %{HTTP_HOST} gabraelhousedemolition\.com.au [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://gabraelhousedemolition.com.au/$1 [R,L]
+
+# Redirect index.php to root
+RewriteRule ^index\.php$ / [R=301,L]
+RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
+
+# To externally remove .php
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,NE,L]
+
+# To internally silent .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L]
+

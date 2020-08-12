@@ -1,0 +1,72 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 14/08/2019 05:16
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("Flaticon.eot");
+  src: url("Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-house:before { content: "\f100"; }
+.flaticon-bulldozer:before { content: "\f101"; }
+.flaticon-hand-shake:before { content: "\f102"; }
+.flaticon-respect:before { content: "\f103"; }
+.flaticon-shield:before { content: "\f104"; }
+.flaticon-talk:before { content: "\f105"; }
+.flaticon-contract:before { content: "\f106"; }
+.flaticon-document:before { content: "\f107"; }
+.flaticon-unplugged:before { content: "\f108"; }
+.flaticon-warning:before { content: "\f109"; }
+.flaticon-excavator:before { content: "\f10a"; }
+.flaticon-truck:before { content: "\f10b"; }
+.flaticon-discount:before { content: "\f10c"; }
+.flaticon-diploma:before { content: "\f10d"; }
+.flaticon-hourglass:before { content: "\f10e"; }
+.flaticon-healing:before { content: "\f10f"; }
+    
+    $font-Flaticon-house: "\f100";
+    $font-Flaticon-bulldozer: "\f101";
+    $font-Flaticon-hand-shake: "\f102";
+    $font-Flaticon-respect: "\f103";
+    $font-Flaticon-shield: "\f104";
+    $font-Flaticon-talk: "\f105";
+    $font-Flaticon-contract: "\f106";
+    $font-Flaticon-document: "\f107";
+    $font-Flaticon-unplugged: "\f108";
+    $font-Flaticon-warning: "\f109";
+    $font-Flaticon-excavator: "\f10a";
+    $font-Flaticon-truck: "\f10b";
+    $font-Flaticon-discount: "\f10c";
+    $font-Flaticon-diploma: "\f10d";
+    $font-Flaticon-hourglass: "\f10e";
+    $font-Flaticon-healing: "\f10f";
